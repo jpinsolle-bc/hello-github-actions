@@ -6,7 +6,13 @@ jobs:
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Install azure-cli
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+          az --version
+
+      - uses: actions/checkout@v2
+
       - uses: ./action-a
         with:
           MY_NAME: "Mona"
